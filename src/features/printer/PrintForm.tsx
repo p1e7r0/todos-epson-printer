@@ -23,9 +23,9 @@ const PrintForm: React.FC<PrintFormProps> = ({ printer }) => {
     }
 
     printer.addTextStyle(false, false, true);
-    printer.addTextSize(2, 2);
-    printer.addText(title + "\n");
-    printer.addTextStyle(false, false, false);
+    // printer.addTextSize(3, 3);
+    // printer.addText(title + "\n");
+    // printer.addTextStyle(false, false, false);
     printer.addTextSize(1, 1);
     printer.addText(text);
     printer.addFeedLine(5);
@@ -35,7 +35,7 @@ const PrintForm: React.FC<PrintFormProps> = ({ printer }) => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center">
       <hr />
       <input
         id="printTitle"

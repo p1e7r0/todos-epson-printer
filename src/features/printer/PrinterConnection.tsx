@@ -56,7 +56,7 @@ const PrinterConnection: React.FC<PrinterConnectionProps> = ({ onConnect, isConn
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center p-4">
       <input id="printerIPAddress" placeholder="Printer IP Address" value={printerIPAddress} onChange={(e) => setPrinterIPAddress(e.currentTarget.value)} />
       <input id="printerPort" placeholder="Printer Port" value={printerPort} onChange={(e) => setPrinterPort(e.currentTarget.value)} />
       <button disabled={connectionStatus === STATUS_CONNECTED} onClick={connect}>
