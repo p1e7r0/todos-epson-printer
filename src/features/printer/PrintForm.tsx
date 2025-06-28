@@ -68,7 +68,7 @@ const PrintForm: React.FC<PrintFormProps> = ({ printer }) => {
               text: e.target.value,
             }))
           }
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline font-mono"
         />
       </div>
       <div className="flex items-center justify-end">
