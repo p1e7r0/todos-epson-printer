@@ -10,15 +10,23 @@ declare global {
 interface PrinterConnectionProps {
   onConnect: (printer: Printer) => void;
   isConnected: boolean;
+  setIsConnected: (isConnected: boolean) => void;
 }
 
-const PrinterConnection: React.FC<PrinterConnectionProps> = ({ onConnect, isConnected }) => {
+const PrinterConnection: React.FC<PrinterConnectionProps> = ({ onConnect, isConnected, setIsConnected }) => {
   const [printerIPAddress, setPrinterIPAddress] = useState<string>("192.168.0.168");
   const [printerPort, setPrinterPort] = useState<string>("8008");
   const [connectionStatus, setConnectionStatus] = useState<string>("");
   const ePosDevice = useRef<EPOSDeviceInstance | null>(null);
 
   const STATUS_CONNECTED = "Connected";
+
+  const disconnect = () => {
+    ePosDevice.current?.disconnect();
+    ePosDevice.current = null;
+    setIsConnected(false);
+    setConnectionStatus("");
+  };
 
   const connect = () => {
     setConnectionStatus("Connecting ...");
@@ -83,13 +91,19 @@ const PrinterConnection: React.FC<PrinterConnectionProps> = ({ onConnect, isConn
       </div>
       <div className="flex items-center justify-between">
         <span className="text-gray-600 text-sm">{connectionStatus}</span>
-        <button
-          disabled={connectionStatus === STATUS_CONNECTED}
-          onClick={connect}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-400"
-        >
-          Connect
-        </button>
+        {isConnected ? (
+          <button onClick={disconnect} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            Disconnect
+          </button>
+        ) : (
+          <button
+            disabled={connectionStatus === STATUS_CONNECTED}
+            onClick={connect}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-400"
+          >
+            Connect
+          </button>
+        )}
       </div>
     </div>
   );

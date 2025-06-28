@@ -485,6 +485,8 @@ export interface EPOSDeviceInstance {
     crypto: boolean,
     callback: (printer: Printer, code: "OK" | "DEVICE_NOT_FOUND" | "DEVICE_IN_USE" | "DEVICE_OPEN_ERROR" | "DEVICE_TYPE_INVALID" | "ERROR_PARAMETER" | "SYSTEM_ERROR") => void
   ): void;
+
+  disconnect(): void;
 }
 
 // Definisce l'interfaccia per il costruttore di EPOSDevice.

@@ -8,19 +8,21 @@ import PrintForm from "../features/printer/PrintForm";
 const App: React.FC = () => {
   const printer = useRef<Printer | null>(null);
   const [isConnected, setIsConnected] = useState(false);
+  const [accordionValue, setAccordionValue] = useState("item-1");
 
   const handleConnect = (p: Printer) => {
     printer.current = p;
     setIsConnected(true);
+    setAccordionValue("item-2");
   };
 
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center">
-      <Accordion type="single" collapsible className="w-full max-w-md">
+      <Accordion type="single" collapsible className="w-full max-w-md" value={accordionValue} onValueChange={setAccordionValue}>
         <AccordionItem value="item-1">
-          <AccordionTrigger>Printer Connection</AccordionTrigger>
+          <AccordionTrigger>{isConnected ? "Connected" : "Disconnected"}</AccordionTrigger>
           <AccordionContent>
-            <PrinterConnection onConnect={handleConnect} isConnected={isConnected} />
+            <PrinterConnection onConnect={handleConnect} isConnected={isConnected} setIsConnected={setIsConnected} />
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
