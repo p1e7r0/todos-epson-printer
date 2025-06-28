@@ -64,7 +64,7 @@ const PrinterConnection: React.FC<PrinterConnectionProps> = ({ onConnect, isConn
   };
 
   return (
-    <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md mb-4">
+    <div className="bg-white p-8 rounded-lg shadow-md w-full max-w mb-4">
       <div className="mb-4">
         <label htmlFor="printerIPAddress" className="block text-gray-700 text-sm font-bold mb-2">
           Printer IP Address

@@ -22,10 +22,12 @@ const PrintForm: React.FC<PrintFormProps> = ({ printer }) => {
       return;
     }
 
-    printer.addTextStyle(false, false, true);
-    // printer.addTextSize(3, 3);
-    // printer.addText(title + "\n");
-    // printer.addTextStyle(false, false, false);
+    if (title) {
+      printer.addTextStyle(false, false, true);
+      printer.addTextSize(2, 2);
+      printer.addText(title + "\n\n");
+    }
+    printer.addTextStyle(false, false, false);
     printer.addTextSize(1, 1);
     printer.addText(text);
     printer.addFeedLine(5);
@@ -35,7 +37,7 @@ const PrintForm: React.FC<PrintFormProps> = ({ printer }) => {
   };
 
   return (
-    <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+    <div className="bg-white p-8 rounded-lg shadow-md w-full max-w">
       <div className="mb-4">
         <label htmlFor="printTitle" className="block text-gray-700 text-sm font-bold mb-2">
           Title
@@ -50,7 +52,7 @@ const PrintForm: React.FC<PrintFormProps> = ({ printer }) => {
               title: e.target.value,
             }))
           }
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline font-mono"
         />
       </div>
       <div className="mb-6">
@@ -59,7 +61,7 @@ const PrintForm: React.FC<PrintFormProps> = ({ printer }) => {
         </label>
         <textarea
           id="textToPrint"
-          rows={3}
+          rows={10}
           placeholder="Text to print"
           value={printOptions?.text}
           onChange={(e) =>

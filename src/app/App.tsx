@@ -18,7 +18,7 @@ const App: React.FC = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center">
-      <Accordion type="single" collapsible className="w-full max-w-md" value={accordionValue} onValueChange={setAccordionValue}>
+      <Accordion type="single" collapsible className="w-full max-w-5xl" value={accordionValue} onValueChange={setAccordionValue}>
         <AccordionItem value="item-1">
           <AccordionTrigger>{isConnected ? "Connected" : "Disconnected"}</AccordionTrigger>
           <AccordionContent>
