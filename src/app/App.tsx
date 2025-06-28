@@ -14,7 +14,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="App">
+    <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center">
       <PrinterConnection onConnect={handleConnect} isConnected={isConnected} />
       <PrintForm printer={printer.current} />
     </div>

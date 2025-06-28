@@ -56,13 +56,41 @@ const PrinterConnection: React.FC<PrinterConnectionProps> = ({ onConnect, isConn
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-4">
-      <input id="printerIPAddress" placeholder="Printer IP Address" value={printerIPAddress} onChange={(e) => setPrinterIPAddress(e.currentTarget.value)} />
-      <input id="printerPort" placeholder="Printer Port" value={printerPort} onChange={(e) => setPrinterPort(e.currentTarget.value)} />
-      <button disabled={connectionStatus === STATUS_CONNECTED} onClick={connect}>
-        Connect
-      </button>
-      <span className="status-label">{connectionStatus}</span>
+    <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md mb-4">
+      <div className="mb-4">
+        <label htmlFor="printerIPAddress" className="block text-gray-700 text-sm font-bold mb-2">
+          Printer IP Address
+        </label>
+        <input
+          id="printerIPAddress"
+          placeholder="Printer IP Address"
+          value={printerIPAddress}
+          onChange={(e) => setPrinterIPAddress(e.currentTarget.value)}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <div className="mb-6">
+        <label htmlFor="printerPort" className="block text-gray-700 text-sm font-bold mb-2">
+          Printer Port
+        </label>
+        <input
+          id="printerPort"
+          placeholder="Printer Port"
+          value={printerPort}
+          onChange={(e) => setPrinterPort(e.currentTarget.value)}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <div className="flex items-center justify-between">
+        <span className="text-gray-600 text-sm">{connectionStatus}</span>
+        <button
+          disabled={connectionStatus === STATUS_CONNECTED}
+          onClick={connect}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-400"
+        >
+          Connect
+        </button>
+      </div>
     </div>
   );
 };
