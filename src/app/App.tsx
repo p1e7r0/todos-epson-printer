@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import "./App.css";
 import { Printer } from "../common/epos-device";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import PrinterConnection from "../features/printer/PrinterConnection";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/common/components/ui/accordion";
+import PrinterConnection from "../features/connection/PrinterConnection";
 import PrintForm from "../features/printer/PrintForm";
 
 const App: React.FC = () => {
